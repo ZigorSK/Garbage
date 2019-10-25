@@ -1,0 +1,622 @@
+pro0gram lab1ORGAZM;
+var
+A: array [1..10] of integer;
+count1, count2: integer;
+i:byte;
+begin
+
+asm
+{Begin of INPUT}
+
+{Clear of console }
+       mov ax, 3H
+       int 10H
+
+       lea si, A
+       mov cx, 10
+       mov i, 0
+
+       mov AH, 02H
+       mov dl, 041H
+       int 21H
+
+       mov dl, 05BH
+       int 21H
+
+       mov dl, 069H
+       int 21H
+
+       mov dl, 05DH
+       int 21H
+
+       mov dl, 03DH
+       int 21H
+
+       mov dl, 07BH
+       int 21H
+
+       mov dl, 02DH
+       int 21H
+
+       mov dl, 033H
+       int 21H
+
+       mov dl, 032H
+       int 21H
+
+       mov dl, 035H
+       int 21H
+
+       mov dl, 036H
+       int 21H
+
+       mov dl, 037H
+       int 21H
+
+       mov dl, 02EH
+       int 21H
+
+       mov dl, 02EH
+       int 21H
+
+       mov dl, 033H
+       int 21H
+
+       mov dl, 032H
+       int 21H
+
+       mov dl, 035H
+       int 21H
+
+       mov dl, 036H
+       int 21H
+
+       mov dl, 037H
+       int 21H
+
+
+       mov dl, 07DH
+       int 21H
+
+       mov dl, 021H
+       int 21H
+
+       mov dl, 0AH
+       int 21H
+
+@m_cx_begin:NOP
+       mov ax, 0
+       MOV [si], ax
+       mov AH, 02H
+       mov dl, 041H
+       int 21H
+
+       mov dl, 05BH
+       int 21H
+
+       mov dl, i
+       add dl, 30H
+       int 21H
+
+       mov dl, 05DH
+       int 21H
+
+       mov dl, 03DH
+       int 21H
+
+       xor bx, bx {my flags register}
+       {End prompt to enter}
+
+       {///////////////////////////////////////////////}
+
+       mov AH, 0H {znak proverka}
+       int 16H
+       cmp AL, 02DH
+       JNZ @not_negative
+       inc bl
+       mov ah, 02H
+       mov dl, 02DH
+       int 21H
+   @NO:nop
+       mov AH, 0H
+       int 16H
+@not_negative:NOP
+       xor bh, bh{count digits}
+       {Is it digit?}
+       cmp al, 031H {1}
+       JGE @b_or_r_1
+       JMP @NO
+@b_or_r_1:nop
+
+       cmp al, 039H {9}
+       JLE @m_or_r_9
+       JMP @NO
+@m_or_r_9:NOP
+
+       {IT digit!}
+       {///}
+       cmp al, 033H
+       JLE @mb_5_poz
+       inc bh{IN digit 4 poz!!!}
+       inc bh
+       JMP @out
+@mb_5_poz:
+       inc bh
+       {//////////}
+       mov ah, 02H
+       mov dl, al
+       int 21H
+       {//konvet//}
+       push ax
+       push bx
+
+       sub al, 30H
+       xor ah, ah
+       mov bx, 10000
+       mul bx
+       add [si], ax
+
+       pop bx
+       pop ax
+
+
+      JMP @obaaaa
+        @m_cx_1:
+        JMP @m_cx_begin
+       @obaaaa:
+
+
+       {///THE second elem of array}
+ @NO2:NOP
+       mov AH, 0H
+       int 16H
+       {///try enter///}
+       cmp al, 0DH
+       JNZ @blo
+       JMP @OUT2
+ @blo:
+       {///}
+       {Is it digit?}
+       cmp al, 030H {0}
+       JGE @b_or_r_0
+       JMP @NO2
+@b_or_r_0:NOP
+
+       cmp al, 039H {9}
+       JLE @m_or_r_9_2
+       JMP @NO2
+@m_or_r_9_2:NOP
+       {It digit!!!}
+
+       {///}
+       mov dl, 032H
+       cmp al, dl
+       JLE @mb_5_poz2
+       inc bh{IN digit 4 poz!!!}
+       inc bh
+       JMP  @out{???????????????????????????????????????????????}
+@mb_5_poz2:
+       inc bh
+       {//////////}
+       mov ah, 02H
+       mov dl, al
+       int 21H
+       {//konvet//}
+              {//konvet//}
+       push ax
+       push bx
+
+       sub al, 30H
+       xor ah, ah
+       mov bx, 1000
+       mul bx
+       add [si], ax
+
+       pop bx
+       pop ax
+
+
+       {///}
+              {///THE 3 elem of array}
+ @NO3:NOP
+       mov AH, 0H
+       int 16H
+       {///try enter///}
+       cmp al, 0DH
+       JNZ @bloa
+       JMP @OUT2
+ @bloa:
+       {///}
+       {Is it digit?}
+       cmp al, 030H {0}
+       JGE @b_or_r_3
+       JMP @NO3
+@b_or_r_3:NOP
+
+       cmp al, 039H {9}
+       JLE @m_or_r_9_3
+       JMP @NO3
+@m_or_r_9_3:NOP
+       {It digit!!!}
+       {///}
+       mov dl, 035H
+       cmp al, dl
+       JLE @mb_5_poz3
+       inc bh{IN digit 4 poz!!!}
+       inc bh
+       JMP @out{???????????????????????????????????????????????}
+@mb_5_poz3:
+       inc bh
+       {//////////}
+       mov ah, 02H
+       mov dl, al
+       int 21H
+       {//konvet//}
+       push ax
+       push bx
+
+       sub al, 30H
+       xor ah, ah
+       mov bx, 100
+       mul bx
+       add [si], ax
+
+       pop bx
+       pop ax
+
+      JMP @obaaaaaa
+        @m_cx_2:
+        JMP @m_cx_1
+       @obaaaaaa:
+             {///}
+              {///THE 4 elem of array}
+ @NO4:NOP
+       mov AH, 0H
+       int 16H
+       {///try enter///}
+       cmp al, 0DH
+       JNZ @bloaa
+       JMP @OUT2
+ @bloaa:
+       {///}
+       JMP @PRIG
+       @OUT2:
+      JMP @OUT3
+       @out:
+       JMP @out1
+
+       @PRIG:
+       {Is it digit?}
+       cmp al, 030H {0}
+       JGE @b_or_r_4
+       JMP @NO4
+@b_or_r_4:NOP
+
+       cmp al, 039H {9}
+       JLE @m_or_r_9_4
+       JMP @NO4
+@m_or_r_9_4:NOP
+       {It digit!!!}
+              {///}
+       mov dl, 036H
+       cmp al, dl
+       JLE @mb_5_poz4
+       inc bh{IN digit 4 poz!!!}
+       inc bh
+       JMP @out1{???????????????????????????????????????????????}
+@mb_5_poz4:
+       inc bh
+       {//////////}
+       mov ah, 02H
+       mov dl, al
+       int 21H
+       {//konvet//}
+       {//konvet//}
+       push ax
+       push bx
+
+       sub al, 30H
+       xor ah, ah
+       mov bx, 10
+       mul bx
+       add [si], ax
+
+       pop bx
+       pop ax
+
+
+             {///}
+              {///THE 5 elem of array}
+ @NO5:NOP
+       mov AH, 0H
+       int 16H
+       {///try enter///}
+       cmp al, 0DH
+       JNZ @bloa1
+       JMP @OUT2
+ @bloa1:
+       {///}
+       {Is it digit?}
+       cmp al, 030H {0}
+       JGE @b_or_r_5
+       JMP @NO5
+@b_or_r_5:NOP
+
+       cmp al, 037H {7}
+       JLE @m_or_r_9_5
+       JMP @NO5
+@m_or_r_9_5:NOP
+       {It digit!!!}
+
+       mov ah, 02H
+       mov dl, al
+       int 21H
+       {//konvet//}
+       push ax
+       push bx
+
+       sub al, 30H
+       xor ah, ah
+       mov bx, 1
+       mul bx
+       add [si], ax
+
+       pop bx
+       pop ax
+       inc bh
+       JMP @OUT3
+
+       {///if 5 poz imposible}
+  @out1:push CX
+       mov ah, 02H
+       mov dl, al
+       int 21H
+       mov cx, 5
+       push ax
+       xor ax, ax
+       mov al, bh
+       sub cx, ax
+       pop ax
+       inc cx
+
+      JMP @obaaaaaaa
+        @m_cx_end:
+        JMP @m_cx_1
+       @obaaaaaaa:
+                    {///THE over elem of array}
+@IMPOS:
+ @NO8:NOP
+       {//konvet//}
+       {[si]+ 10^(sx-1)*al  }
+
+       push cx
+       dec cx
+       push ax
+       mov ax, 1
+
+ @KONV:jcxz @ziir
+       mov dx, 10
+       mul dx
+       loop @KONV
+      JMP @ivan
+       @ziir:
+       JMP @ivan2
+       @ivan:
+       mov dx, ax
+
+       pop ax
+       sub al, 030H
+       xor ah, ah
+       mul dx
+       add [si], ax
+       pop cx
+       jmp @ivan3
+       @ivan2:
+
+       mov dx, ax
+       pop ax
+       sub al, 030H
+       xor ah, ah
+       mul dx
+       add [si], ax
+       pop cx
+       JMP @ivan4
+       @ivan3:
+       {///}
+       mov ah, 0H
+       int 16H
+       inc bh
+
+
+       {///try enter///}
+       cmp al, 0DH
+       JNZ @blo8
+       mov ah, 02H
+       mov di, 0AH
+       int 21H
+       pop cx
+       dec bh
+       JMP @OUT3
+ @blo8:
+       {///}
+       {Is it digit?}
+       cmp al, 030H {0}
+       JGE @b_or_r_89
+       JMP @NO8
+@b_or_r_89:NOP
+
+       cmp al, 039H {9}
+       JLE @m_or_r_87
+       JMP @NO8
+@m_or_r_87:NOP
+       {It digit!!!}
+
+       mov ah, 02H
+       mov dl, al
+       int 21H
+@ivan4:NOP
+loop @IMPOS
+
+{////////////////////////////////////////9///////////////////////}
+      JMP @obaaaaaaaaa
+        @m_cx_end1:
+        JMP @m_cx_end
+       @obaaaaaaaaa:
+       pop CX
+       {////}
+       {///////////////////////////////////////////////}
+ @OUT3:{chengh size}
+       push cx
+
+       mov ax, 5
+       sub al, bh
+       xor ah,ah
+       mov cx, ax
+
+       push bx
+       mov bx, 10
+       mov ax, 1
+
+       @metk:jcxz @sobaka
+       mul bx
+       loop @metk
+    @sobaka:
+       mov bx, ax
+       mov ax, [si]
+       xor dx, dx
+       div bx
+       mov [si], ax
+       pop bx
+
+
+       pop cx
+
+
+       mov ah, 02H
+       mov dl, 0AH
+       int 21H
+       TEST bl, 1
+       jz @invers
+       mov ax, [si]
+       neg ax
+       mov [si], ax
+       @invers:NOP
+
+
+       {/////}
+       inc si
+       inc si
+       inc i
+       loop @m_cx_end1
+
+
+{End of INPUT}
+
+
+   mov count1, 0
+   mov count2, 0
+   lea si, A
+   mov cx, 10
+@k:TEST si, 1{Set flag ZF = 1, if z =0 chotn, and z = 1 if nechot}
+   JZ @a
+   inc count2
+   jmp @u
+@a:{nechotn}
+   inc count1
+@u:
+   inc si
+   inc si
+   loop @k
+
+   lea si, A
+   mov cx, 5
+   mov ax, count1
+   cmp ax, count2
+   js @m
+   inc si
+   inc si
+@m:NOP
+@l:
+   xor ax, ax
+   mov [si], ax
+   inc si
+   inc si
+   inc si
+   inc si
+
+   loop @l
+
+
+{output_data_of_array}
+   mov ah, 02H
+   mov dl, 0AH
+   int 21H
+   int 21H
+
+   mov i, 0
+
+   lea si, A
+   mov cx, 10
+
+@write_m_end:
+   mov AH, 02H
+   mov dl, 041H
+   int 21H
+
+   mov dl, 05BH
+   int 21H
+
+   mov dl, i
+   add dl, 30H
+   int 21H
+
+   mov dl, 05DH
+   int 21H
+
+   mov dl, 03DH
+   int 21H
+   {size}
+   mov ax, [si]
+
+   test ax, 8000H
+   jns @POZ
+   mov ah, 02H
+   mov dl, 02DH
+   int 21H
+   neg ax
+@POZ:{pozitive}
+   {}
+   push cx
+   mov cx, 5
+   mov bx, 10
+
+@sss:
+
+
+   xor dx, dx
+   div bx
+   push ax
+
+{write dx}
+   add dl, 030H
+   mov ah, 02H
+   int 21H
+
+   pop ax
+   cmp ax, 0
+   jz   @x_i
+
+   loop @sss
+   @x_i:
+   pop cx
+   inc si
+   inc si
+
+   mov ah, 02H
+   mov dl, 0AH
+   int 21H
+   inc i
+   loop @write_m_end
+end;
+end.
+ 
