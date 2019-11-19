@@ -47,20 +47,20 @@ void DrawFigure_and_fill(double A[][3], int flag)
 			{
 				SetPixel(hdc, B[0][0], B[0][1], RGB(R1, R2, R3));
 
-				//Заполняем массив граничных точек фигуры
-				if (count < 4000)// Если в массиве есть место
+				//Г‡Г ГЇГ®Г«Г­ГїГҐГ¬ Г¬Г Г±Г±ГЁГў ГЈГ°Г Г­ГЁГ·Г­Г»Гµ ГІГ®Г·ГҐГЄ ГґГЁГЈГіГ°Г»
+				if (count < 4000)// Г…Г±Г«ГЁ Гў Г¬Г Г±Г±ГЁГўГҐ ГҐГ±ГІГј Г¬ГҐГ±ГІГ®
 				{
 					flag_repeat = B[0][1];
 					if (flag_repeat != *(arr_y + count - 1))
 					{
-						*(arr_x + count) = B[0][0];//Запоминаем x
-						*(arr_y + count) = B[0][1];//ЗАпоминаем y
+						*(arr_x + count) = B[0][0];//Г‡Г ГЇГ®Г¬ГЁГ­Г ГҐГ¬ x
+						*(arr_y + count) = B[0][1];//Г‡ГЂГЇГ®Г¬ГЁГ­Г ГҐГ¬ y
 
 						count++;
 					}
 
 				}
-				else// Если Массив переполнен
+				else// Г…Г±Г«ГЁ ГЊГ Г±Г±ГЁГў ГЇГҐГ°ГҐГЇГ®Г«Г­ГҐГ­
 				{
 					flag_repeat = B[0][1];
 					if (flag_repeat != *(arr_y + count - 1))
@@ -68,8 +68,8 @@ void DrawFigure_and_fill(double A[][3], int flag)
 						arr_x = (int *)realloc(arr_x, sizeof(int)*(count + 1));
 						arr_y = (int *)realloc(arr_y, sizeof(int)*(count + 1));
 
-						*(arr_x + count) = B[0][0];//Запоминаем x
-						*(arr_y + count) = B[0][1];//ЗАпоминаем y
+						*(arr_x + count) = B[0][0];//Г‡Г ГЇГ®Г¬ГЁГ­Г ГҐГ¬ x
+						*(arr_y + count) = B[0][1];//Г‡ГЂГЇГ®Г¬ГЁГ­Г ГҐГ¬ y
 
 						count++;
 					}
@@ -89,9 +89,9 @@ void DrawFigure_and_fill(double A[][3], int flag)
 				}
 			}
 		}
-		//Посрочная заливка, используя граничные точкив массивах arr_x And arr_y
+		//ГЏГ®Г±Г°Г®Г·Г­Г Гї Г§Г Г«ГЁГўГЄГ , ГЁГ±ГЇГ®Г«ГјГ§ГіГї ГЈГ°Г Г­ГЁГ·Г­Г»ГҐ ГІГ®Г·ГЄГЁГў Г¬Г Г±Г±ГЁГўГ Гµ arr_x And arr_y
 
-		//Сортируем массивы по Y(Если Y равны, то по х)
+		//Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГўГ» ГЇГ® Y(Г…Г±Г«ГЁ Y Г°Г ГўГ­Г», ГІГ® ГЇГ® Гµ)
 		count--;
 
 		int tmp;
@@ -120,7 +120,7 @@ void DrawFigure_and_fill(double A[][3], int flag)
 				break;
 		}
 
-		//ЗАносим в массив точки по определённому Y Сортируем их и если по этому y не вершина фгуры, заливаем линию
+		//Г‡ГЂГ­Г®Г±ГЁГ¬ Гў Г¬Г Г±Г±ГЁГў ГІГ®Г·ГЄГЁ ГЇГ® Г®ГЇГ°ГҐГ¤ГҐГ«ВёГ­Г­Г®Г¬Гі Y Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ ГЁГµ ГЁ ГҐГ±Г«ГЁ ГЇГ® ГЅГІГ®Г¬Гі y Г­ГҐ ГўГҐГ°ГёГЁГ­Г  ГґГЈГіГ°Г», Г§Г Г«ГЁГўГ ГҐГ¬ Г«ГЁГ­ГЁГѕ
 		int count_x = 0, count_y = 0, now_y = arr_y[0];
 		int mas_x[3];
 
@@ -137,7 +137,7 @@ void DrawFigure_and_fill(double A[][3], int flag)
 				if (now_y != arr_y[count_y])	break;
 			}
 
-			//сортируем массив и заливаем линию
+			//Г±Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГў ГЁ Г§Г Г«ГЁГўГ ГҐГ¬ Г«ГЁГ­ГЁГѕ
 			if (count_x == 2)
 			{
 				if (*mas_x > *(mas_x + 1))
@@ -184,20 +184,20 @@ void DrawFigure_and_fill(double A[][3], int flag)
 			{
 				SetPixel(hdc, B[0][0], B[0][1], RGB(0, 0, 0));
 
-				//Заполняем массив граничных точек фигуры
-				if (count < 4000)// Если в массиве есть место
+				//Г‡Г ГЇГ®Г«Г­ГїГҐГ¬ Г¬Г Г±Г±ГЁГў ГЈГ°Г Г­ГЁГ·Г­Г»Гµ ГІГ®Г·ГҐГЄ ГґГЁГЈГіГ°Г»
+				if (count < 4000)// Г…Г±Г«ГЁ Гў Г¬Г Г±Г±ГЁГўГҐ ГҐГ±ГІГј Г¬ГҐГ±ГІГ®
 				{
 					flag_repeat = B[0][1];
 					if (flag_repeat != *(arr_y + count - 1))
 					{
-						*(arr_x + count) = B[0][0];//Запоминаем x
-						*(arr_y + count) = B[0][1];//ЗАпоминаем y
+						*(arr_x + count) = B[0][0];//Г‡Г ГЇГ®Г¬ГЁГ­Г ГҐГ¬ x
+						*(arr_y + count) = B[0][1];//Г‡ГЂГЇГ®Г¬ГЁГ­Г ГҐГ¬ y
 
 						count++;
 					}
 
 				}
-				else// Если Массив переполнен
+				else// Г…Г±Г«ГЁ ГЊГ Г±Г±ГЁГў ГЇГҐГ°ГҐГЇГ®Г«Г­ГҐГ­
 				{
 					flag_repeat = B[0][1];
 					if (flag_repeat != *(arr_y + count - 1))
@@ -205,8 +205,8 @@ void DrawFigure_and_fill(double A[][3], int flag)
 						arr_x = (int *)realloc(arr_x, sizeof(int)*(count + 1));
 						arr_y = (int *)realloc(arr_y, sizeof(int)*(count + 1));
 
-						*(arr_x + count) = B[0][0];//Запоминаем x
-						*(arr_y + count) = B[0][1];//ЗАпоминаем y
+						*(arr_x + count) = B[0][0];//Г‡Г ГЇГ®Г¬ГЁГ­Г ГҐГ¬ x
+						*(arr_y + count) = B[0][1];//Г‡ГЂГЇГ®Г¬ГЁГ­Г ГҐГ¬ y
 
 						count++;
 					}
@@ -226,9 +226,9 @@ void DrawFigure_and_fill(double A[][3], int flag)
 				}
 			}
 		}
-		//Посрочная заливка, используя граничные точкив массивах arr_x And arr_y
+		//ГЏГ®Г±Г°Г®Г·Г­Г Гї Г§Г Г«ГЁГўГЄГ , ГЁГ±ГЇГ®Г«ГјГ§ГіГї ГЈГ°Г Г­ГЁГ·Г­Г»ГҐ ГІГ®Г·ГЄГЁГў Г¬Г Г±Г±ГЁГўГ Гµ arr_x And arr_y
 
-		//Сортируем массивы по Y(Если Y равны, то по х)
+		//Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГўГ» ГЇГ® Y(Г…Г±Г«ГЁ Y Г°Г ГўГ­Г», ГІГ® ГЇГ® Гµ)
 		count--;
 
 		int tmp;
@@ -257,7 +257,7 @@ void DrawFigure_and_fill(double A[][3], int flag)
 				break;
 		}
 
-		//ЗАносим в массив точки по определённому Y Сортируем их и если по этому y не вершина фгуры, заливаем линию
+		//Г‡ГЂГ­Г®Г±ГЁГ¬ Гў Г¬Г Г±Г±ГЁГў ГІГ®Г·ГЄГЁ ГЇГ® Г®ГЇГ°ГҐГ¤ГҐГ«ВёГ­Г­Г®Г¬Гі Y Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ ГЁГµ ГЁ ГҐГ±Г«ГЁ ГЇГ® ГЅГІГ®Г¬Гі y Г­ГҐ ГўГҐГ°ГёГЁГ­Г  ГґГЈГіГ°Г», Г§Г Г«ГЁГўГ ГҐГ¬ Г«ГЁГ­ГЁГѕ
 		int count_x = 0, count_y = 0, now_y = arr_y[0];
 		int mas_x[3];
 
@@ -274,7 +274,7 @@ void DrawFigure_and_fill(double A[][3], int flag)
 				if (now_y != arr_y[count_y])	break;
 			}
 
-			//сортируем массив и заливаем линию
+			//Г±Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГў ГЁ Г§Г Г«ГЁГўГ ГҐГ¬ Г«ГЁГ­ГЁГѕ
 			if (count_x == 2)
 			{
 				if (*mas_x > *(mas_x + 1))
@@ -395,10 +395,10 @@ int main()
 	char choice = '0';
 	/*for (int i = 0; i < 4; i++)
 	{
-		printf("Введите X[%d]:", i);
+		printf("Г‚ГўГҐГ¤ГЁГІГҐ X[%d]:", i);
 		scanf("%lf", &A[i][0]);
 
-		printf("Введите Y[%d]:", i);
+		printf("Г‚ГўГҐГ¤ГЁГІГҐ Y[%d]:", i);
 		scanf("%lf", &A[i][1]);
 
 		A[i][0] += X0;
@@ -423,42 +423,42 @@ int main()
 
 		switch (choice)
 		{
-		case '2'://Сдвиг  вниз
+		case '2'://Г‘Г¤ГўГЁГЈ  ГўГ­ГЁГ§
 			DrawFigure_and_fill(A, 0);
 			move_y(A, 0);
 			break;
 
-		case '8'://Сдвиг вверх
+		case '8'://Г‘Г¤ГўГЁГЈ ГўГўГҐГ°Гµ
 			DrawFigure_and_fill(A, 0);
 			move_y(A, 1);
 			break;
 
-		case '6'://Сдвиг вправо 
+		case '6'://Г‘Г¤ГўГЁГЈ ГўГЇГ°Г ГўГ® 
 			DrawFigure_and_fill(A, 0);
 			move_x(A, 1);
 			break;
 
-		case '4'://Сдвиг влево
+		case '4'://Г‘Г¤ГўГЁГЈ ГўГ«ГҐГўГ®
 			DrawFigure_and_fill(A, 0);
 			move_x(A, 0);
 			break;
 
-		case '1'://Уменьшить
+		case '1'://Г“Г¬ГҐГ­ГјГёГЁГІГј
 			DrawFigure_and_fill(A, 0);
 			Scale(A, 0);
 			break;
 
-		case '3'://Увеличить
+		case '3'://Г“ГўГҐГ«ГЁГ·ГЁГІГј
 			DrawFigure_and_fill(A, 0);
 			Scale(A, 1);
 			break;
 
-		case '7'://Вращать влево
+		case '7'://Г‚Г°Г Г№Г ГІГј ГўГ«ГҐГўГ®
 			DrawFigure_and_fill(A, 0);
 			rot(A, 1);
 			break;
 
-		case '9'://Вращать вправо
+		case '9'://Г‚Г°Г Г№Г ГІГј ГўГЇГ°Г ГўГ®
 			DrawFigure_and_fill(A, 0);
 			rot(A, 0);
 			break;
